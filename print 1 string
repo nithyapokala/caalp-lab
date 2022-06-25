@@ -1,0 +1,16 @@
+assume ds:data , cs:code
+data segment
+ nl1 db 10,13,"cse$"
+data ends
+
+code segment
+start:
+      mov ax,data
+      mov ds,ax
+      lea ax,nl1
+      mov ah,09h
+      int 21h
+      mov ah,4ch
+      int 21h
+code ends
+end start
