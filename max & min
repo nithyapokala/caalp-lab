@@ -1,0 +1,43 @@
+assume ds:data , cs:code
+
+data segment
+  arr db 1,7,4,5,6,7
+  lea dw $_arr
+  min db ?
+  max db ?
+data ends
+
+code segment
+start:
+      mov ax,data
+      mov ds,ax
+      
+      lea si,arr
+      mov al,arr[si]
+      mov min,al
+      mov max,al
+      mov cx,len
+      
+      repeat:
+              mov al,arr[si]  
+              cmp min,al
+              jl checkmax
+              
+             mov min,al 
+              
+       checkmax:
+                cmp max,al
+                jg done
+                
+             mov max,al   
+       done:
+             inc si
+       
+       loop repeat
+       mov bl,min
+       mov cl,max
+       mov ah,4ch
+       int 03h
+       
+ code ends 
+ end start
