@@ -1,0 +1,31 @@
+assume ds:data,cs:code
+data segment
+ msg1 db "hi$"
+ msg2 db " nithya$"
+data ends
+
+code segment
+start:
+      mov ax,data
+      mov ds,ax
+      
+      lea dx,msg1
+      mov ah,09h
+      int 21h
+      
+      mov dx,13
+      mov ah,2
+      int 21h
+      
+      mov dx,10
+      mov ah,2
+      int 21h
+      
+      lea dx,msg2
+      mov ah,09h
+      int 21h
+      
+      mov ah,4ch
+      int 21h
+code ends
+end start
