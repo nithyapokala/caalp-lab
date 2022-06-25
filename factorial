@@ -1,0 +1,17 @@
+assume cs:code
+
+code segment
+start:
+      mov al,5
+      mov cl,4
+      mov bl,al
+      dec bl
+      l1:
+         mul bl
+         dec bl
+      loop l1
+      
+      mov ah,4ch
+      int 03h
+ code ends
+ end start
